@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="css/MyWebsite.css">
+    <title>我的主页</title>
+</head>
+<body>
+    <div id="app">
+        <el-container>
+            <!--侧边导航-->
+            <el-aside id="container-aside" width="200px">
+                <el-menu
+                default-active="1-1"
+                @open="handleOpen"
+                @close="handleClose">
+                    <el-submenu index="1">
+                        <template slot="title">
+                            <span>ReadMe</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item index="1-1">
+                                <router-link to="/readme" tag="p">ReadMe</router-link>
+                            </el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
+                    <!--安卓项目-->
+                    <el-submenu index="2">
+                        <template slot="title">
+                            <span>安卓项目</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item index="2-1">
+                                <router-link to="/areWeThereYet" tag="p">Are we there yet</router-link>
+                            </el-menu-item>
+                            <el-menu-item index="2-2">
+                                <router-link to="/game2048" tag="p">2048游戏</router-link>
+                            </el-menu-item>
+                            <el-menu-item index="2-3">
+                                <router-link to="/cruddyPizza" tag="p">Cruddy pizza</router-link>
+                            </el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
+                    <!--JavaFX项目-->
+                    <!--其他项目-->
+                </el-menu>
+            </el-aside>
+            <el-container>
+                <!--主面板-->
+                <el-main>
+                    <router-view></router-view>
+                </el-main>
+            </el-container>
+        </el-container>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router@3.5.4/dist/vue-router.js"></script>
+
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script type="text/x-template" id="readme-template">
+    <div>
+        <p class="page-title">ReadMe</p>
+        <div>
+            <span>{{introduction}}</span>
+        </div>
+        <el-divider>联系方式</el-divider>
+        <div>
+            <ul class="describe-list">
+                <li v-for="(value,name) in contact">{{name}}:{{value}}</li>
+            </ul>
+        </div>
+    </div>
+</script>
+<script type="text/x-template" id="project-template">
+    <div>
+        <p class="page-title">{{this.title}}</p>
+        <el-divider>功能描述</el-divider>
+        <div>
+            <ul class="describe-list">
+                <li v-for="item in describeLists" :key="item.describe">{{item.describe}}</li>
+            </ul>
+        </div>
+        <el-divider>英文需求</el-divider>
+        <div>
+            <span>{{this.demandEN}}</span>
+        </div>
+        <el-divider>演示图片</el-divider>
+        <div>
+            <ul>
+                <li v-for="item in imgList" :key="item.src">
+                    <img :src=item.src style="width: 100%">
+                </li>
+            </ul>
+        </div>
+    </div>
+</script>
+<script src="../js/MyWebsite.js"></script>
+</html>

@@ -1,0 +1,12 @@
+.page-title{
+    text-align: center;
+    font-size: xxx-large;
+    font-weight: bold;
+}
+.describe-list{
+    line-height: 200%;
+}
+
+span{
+    white-space: pre-wrap;
+}
